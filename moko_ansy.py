@@ -90,7 +90,7 @@ def read_list_data():
             need_links.append(img)
 
             # 创建目录
-            file_path = "./downs/{}".format(re.sub('[\/\.\*\~]', '', str(img[0])).strip())
+            file_path = "./downs/{}".format(re.sub('[\/\.\*\~\?\:\(\)\*<>|]', '', str(img[0])).strip())
 
             if not os.path.exists(file_path):
                 os.mkdir(file_path)  # 创建目录
@@ -125,7 +125,7 @@ def downs_imgs(img,title):
         return
     content = response.content
     file_name = str(int(time.time()))+".jpg"
-    file = "./downs/{}/{}".format(re.sub('[\/\.\*\~]', '', str(title)).strip(),file_name)
+    file = "./downs/{}/{}".format(re.sub('[\/\.\*\~\?\:\(\)\*<>|]', '', str(title)).strip(),file_name)
     try:
         with open(file,"wb+") as f:
             f.write(content)
